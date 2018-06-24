@@ -14,11 +14,11 @@ pip install laminarflow
 
 LaminarFlow has two classes for writing to and reading from TFRecord datasets, `DatasetWriter` and `DatasetReader`.
 
-When creating your datasets with `DatasetWriter`, you can pass in raw Python or Numpy data, and it will automatically get converted into tf.Examples or tf.SequenceExamples and be written to a TFRecord file.
+When creating your datasets with `DatasetWriter`, you can pass in raw Python or Numpy data, and it will automatically get converted into TensorFlow Examples or SequenceExamples and be written to a TFRecord file.
 
-Then when reading from the TFRecord file, `DatasetReader` takes care of creating the input pipeline that will parse your stored tf.Examples or tf.SequenceExamples, prepare them as needed (batching, padding, shuffling, etc.), then pass them to your TensorFlow Estimator, implementing the recommended best practices as outlined in TensorFlow's [Input Pipline Performance Guide](https://www.tensorflow.org/performance/datasets_performance).
+Then when reading from the TFRecord file, `DatasetReader` takes care of creating the input pipeline that will parse your stored Examples or SequenceExamples, prepare them as needed (batching, padding, shuffling, etc.), then pass them to your TensorFlow Estimator, implementing the recommended best practices as outlined in TensorFlow's [Input Pipline Performance Guide](https://www.tensorflow.org/performance/datasets_performance).
 
-To demonstrate, we'll train a model to predict an XOR circuit's output value. First, we create our datasets.
+To demonstrate, we'll create some datasets.
 
 ```python
 import laminarflow as lf
@@ -128,4 +128,4 @@ The shape of the `sequence_features` values must have a rank of at least 1. The 
 
 When a batch of SequenceExamples is created, any sequences that are shorter than the longest sequence will be padded with zeros.
 
-The length of each sequence will be extracted from the data as one of the steps in the input pipeline when reading from the dataset. The lengths of the sequences will be made available as one of the feature values passing into the model_fn, `features['lengths']`. It will be a batch size length list of ints, that are the lengths of each of the sequences in the batch before that sequence was possibly padded with zeros.
+The length of each sequence will be extracted from the data as one of the steps in the input pipeline when reading from the dataset. The lengths of the sequences will be made available as one of the feature values passed into the model_fn, `features['lengths']`. It will be a batch size length list of ints, that are the lengths of each of the sequences in the batch before that sequence was possibly padded with zeros.
