@@ -1,8 +1,8 @@
 """An example that uses LaminarFlow's DatasetWriter and DatasetReader.
 
 First we create a training set and test set of XOR data.
-Then we train a model on those datasets.
-Then we make predictions with the trained model.
+Then we train a model using those datasets.
+Then we make predictions using the trained model.
 """
 
 from __future__ import absolute_import
