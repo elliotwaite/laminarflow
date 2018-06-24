@@ -2,7 +2,7 @@
 
 Streamline your TensorFlow workflow.
 
-### TFRecord Datasets
+## TFRecord Datasets
 
 LaminarFlow has two classes for writing to and reading from TFRecord datasets, `DatasetWriter` and `DatasetReader`.
 
@@ -78,7 +78,7 @@ Calling `lf.DatasetReader('/tmp/train.tfrecord')` creates a dataset using the TF
 
 The created dataset has an `input_fn` method that you can pass in as the input function to a TensorFlow Estimator. The `input_fn` method automatically creates the input pipeline for your dataset, implementing the recommended best practices as outlined in TensorFlow's [Input Pipline Performance Guide](https://www.tensorflow.org/performance/datasets_performance).
 
-#### Additional Features
+### Additional Features
 
 You can create a `DatasetWriter` using a `with` statement, in which case you wouldn't have to explicitly call the `close()` method.
 
