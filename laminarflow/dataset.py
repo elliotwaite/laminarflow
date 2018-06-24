@@ -373,7 +373,7 @@ class DatasetReader(object):
 
       features.update(sequence_features)
 
-      features['length'] = tf.shape(
+      features['lengths'] = tf.shape(
         sequence_features[sequence_features.keys()[0]])[0]
 
     label = features.pop('label', None)
@@ -394,7 +394,7 @@ class DatasetReader(object):
         key: val['shape']
         for key, val in self.metadata['sequence_features'].items()
       })
-    features_padded_shapes['length'] = []
+    features_padded_shapes['lengths'] = []
     label_padded_shape = (features_padded_shapes.pop('label', None) or
                           features_padded_shapes.pop('labels', None))
 
