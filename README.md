@@ -100,7 +100,7 @@ with lf.DatasetWriter('data/train.tfrecord') as train_writer:
 
 #### SequenceExamples
 
-The default behavior of the `write` method is to write a TensorFlow Example. To write a SequenceExample, instead of passing in our features to the first parameter of the `write` method, we pass in our features using the `context_features` and `sequence_features` parameters.
+The default behavior of the `write` method is to write a TensorFlow Example. To write a SequenceExample, instead of passing in features to the first parameter of the `write` method, pass in features using the `context_features` and `sequence_features` parameters.
 
 ```python
 train_writer.write(
@@ -122,10 +122,10 @@ train_writer.write(
   })
 ```
 
-Passing in `context_features` is optional. Their values must have the same shape between SequenceExamples, similar to Example features.
+Passing in `context_features` is optional, but if used, their values must have the same shape between SequenceExamples, similar to Example features.
 
 The shape of the `sequence_features` values must have a rank of at least 1. The length of the first dimension must be the same for all `sequence_features` within a SequenceExample, but can vary between SequenceExamples. And the lengths of the rest of the dimensions can vary between features, but must be the same between SequenceExamples.
 
 When a batch of SequenceExamples is created, any sequences that are shorter than the longest sequence will be padded with zeros.
 
-The length of the each sequence will be extracted from the data as one of the steps in the input pipeline when training a model. The lengths of the sequences will be passed into the model_fn as one of the features, `features['length']`. It will be a batch size length list of ints.
+The length of each sequence will be extracted from the data as one of the steps in the input pipeline when reading from the dataset. The lengths of the sequences will be made available as one of the feature values passing into the model_fn, `features['lengths']`. It will be a batch size length list of ints, that are the lengths of each of the sequences in the batch before that sequence was possibly padded with zeros.
