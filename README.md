@@ -86,7 +86,7 @@ Calling `lf.DatasetReader('data/train.tfrecord')` creates a dataset using the TF
 
 The created dataset has an `input_fn` method that you can pass in as the input function to a TensorFlow Estimator. The `input_fn` method automatically creates the input pipeline for your dataset.
 
-For a more complete example, check out: [xor.py](examples/xor.py)
+For a more complete example of creating datasets, training a model, and making predictions with that model, check out: [xor.py](examples/xor.py)
 
 #### Using a `with` Statement
 
