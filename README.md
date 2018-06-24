@@ -2,7 +2,7 @@
 
 Streamline your TensorFlow workflow.
 
-###TFRecord Datasets
+### TFRecord Datasets
 
 LaminarFlow has two classes for writing to and reading from TFRecord datasets, `DatasetWriter` and `DatasetReader`.
 
