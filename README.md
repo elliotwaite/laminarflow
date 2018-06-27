@@ -10,7 +10,7 @@ pip install laminarflow
 
 ## Usage
 
-#### TFRecord Datasets
+### TFRecord Datasets
 
 LaminarFlow has two classes for writing to and reading from TFRecord datasets, `DatasetWriter` and `DatasetReader`.
 
@@ -86,9 +86,9 @@ Calling `lf.DatasetReader('data/train.tfrecord')` creates a dataset using the TF
 
 The created dataset has an `input_fn` method that you can pass in as the input function to a TensorFlow Estimator. The `input_fn` method automatically creates the input pipeline for your dataset.
 
-For a more complete example of creating datasets, training a model, and making predictions with that model, check out: [xor.py](examples/xor.py)
+Check out [examples/xor.py](examples/xor.py) for a complete example of creating datasets, training a model with those datasets, and then making predictions with that model. 
 
-#### Using a `with` Statement
+### Using a `with` Statement
 
 A `DatasetWriter` can also be created using a `with` statement, in which case the `close()` method does not need to be called.
 
@@ -100,7 +100,7 @@ with lf.DatasetWriter('data/train.tfrecord') as train_writer:
   })
 ```
 
-#### SequenceExamples
+### SequenceExamples
 
 The default behavior of the `write` method is to write a TensorFlow Example. To write a SequenceExample, instead of passing in features to the first parameter of the `write` method, pass in features using the `context_features` and `sequence_features` parameters.
 
@@ -131,3 +131,5 @@ The shape of the `sequence_features` values must have a rank of at least 1. The 
 When a batch of SequenceExamples is created, any sequences that are shorter than the longest sequence will be padded with zeros.
 
 The length of each sequence will be extracted from the data as one of the steps in the input pipeline when reading from the dataset. The lengths of the sequences will be made available as one of the feature values passed into the model_fn, `features['lengths']`. It will be a batch size length list of ints, that are the lengths of each of the sequences in the batch before that sequence was possibly padded with zeros.
+
+Check out [examples/xor_sequence.py](examples/xor_sequence.py) for a complete example of creating SequenceExample datasets, training a model with those datasets, and then making predictions with that model. 
