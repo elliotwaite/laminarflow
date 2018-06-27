@@ -1,15 +1,11 @@
-import os
 import setuptools
 
-with open(os.path.join(os.path.dirname(__file__), 'README.md')) as f:
+with open('README.md') as f:
   long_description = f.read()
-
-with open(os.path.join(os.path.dirname(__file__), 'requirements.txt')) as f:
-  install_requirements = f.readlines()
 
 setuptools.setup(
   name='laminarflow',
-  version='0.0.3',
+  version='0.0.7',
   description='Streamline your TensorFlow workflow.',
   long_description=long_description,
   long_description_content_type='text/markdown',
@@ -17,7 +13,10 @@ setuptools.setup(
   author='Elliot Waite',
   author_email='elliot@elliotwaite.com',
   packages=setuptools.find_packages(),
-  install_requires=install_requirements,
+  install_requires=[
+    'numpy >= 1.13.3',
+    'tensorflow >= 1.7.0',
+  ],
   classifiers=(
     'Development Status :: 1 - Planning',
     'Intended Audience :: Developers',
