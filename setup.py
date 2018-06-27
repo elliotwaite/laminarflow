@@ -1,9 +1,10 @@
+import os
 import setuptools
 
-with open('README.md') as f:
+with open(os.path.join(os.path.dirname(__file__), 'README.md')) as f:
   long_description = f.read()
 
-with open('requirements.txt') as f:
+with open(os.path.join(os.path.dirname(__file__), 'requirements.txt')) as f:
   install_requirements = f.readlines()
 
 setuptools.setup(

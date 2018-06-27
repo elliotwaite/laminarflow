@@ -1,5 +1,2 @@
 .git
 .idea
-build/
-dist/
-*.egg-info/

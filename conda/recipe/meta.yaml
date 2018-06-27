@@ -1,0 +1,45 @@
+{% set name = "laminarflow" %}
+{% set version = "0.0.3" %}
+{% set sha256 = "47477ff8281232b96eff81c0b1c399e6b73df6cb7134ab37f9dab8f2f2ce41ab" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: {{ sha256 }}
+
+build:
+  noarch: python
+  number: 0
+  script: python -m pip install --no-deps --ignore-installed .
+
+requirements:
+  host:
+    - python
+    - pip
+  run:
+    - python
+    - numpy >=1.13.3
+    - tensorflow >=1.7.0
+
+test:
+  imports:
+    - laminarflow
+
+about:
+  home: http://github.com/elliotwaite/laminarflow
+  license: Apache-2.0
+  license_family: Apache
+  license_file: LICENSE
+  summary: 'Streamline your TensorFlow workflow.'
+  description: |
+    LaminarFlow streamlines your TensorFlow workflow by making it easy to
+    write to and read from TFRecord datasets.
+  doc_url: https://github.com/elliotwaite/laminarflow
+  dev_url: https://github.com/elliotwaite/laminarflow
+
+extra:
+  recipe-maintainers:
+    - elliotwaite
